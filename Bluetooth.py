@@ -44,8 +44,13 @@ class Bluetooth:
                 "RequireAuthentication":False,
                 "RequireAuthorization":False
             }
-            self.manager.RegisterProfile("/org/bluez/hci0", self.UUID, opts)
-            
+            uuidarray = self.hci_props.Get("org.bluez.Adapter1", "UUIDs")
+            for uuids in uuidarray:
+                try:
+                    self.manager.RegisterProfile("/org/bluez/hci0", uuids, opts)
+                except:
+                    print uuids
+
             print "Service Record saved!"
         except:
             print "Service Records saved. Probably already exists"
@@ -55,7 +60,7 @@ class Bluetooth:
         os.system("sudo hciconfig hci0 name "+self.devname)
         os.system("hciconfig hci0 piscan")
 
-        self.service_handle = self. service.AddRecord(self.service_record)
+        self.service_handle = self.service.AddRecord(self.service_record)
         print "Service record added"
  
         self.soccontrol.listen(1)
