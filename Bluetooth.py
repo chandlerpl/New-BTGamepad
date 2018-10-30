@@ -2,7 +2,7 @@ from bluetooth import *
 import dbus # Used to set up the SDP record
 class Bluetooth:
     """docstring for Gamepad"""
-    HOST = 0
+    HOST = "B8:27:EB:A7:A4:55"
     PORT = 1
     P_CTRL = 17
     P_INTR = 19
