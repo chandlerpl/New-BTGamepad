@@ -5,9 +5,9 @@ ch = 0
 while ch==0:
     while True:
         try:
-    self.dev = InputDevice("/dev/input/event"+str(i))
-    if "keyboard" in str(self.dev):
-              break
+			self.dev = InputDevice("/dev/input/event"+str(i))
+			if "keyboard" in str(self.dev):
+				break
         except Exception, e:
             print "Keyboard not found."
             break
