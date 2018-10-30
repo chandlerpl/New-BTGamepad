@@ -40,15 +40,12 @@ class Bluetooth:
             opts = {
                 "AutoConnect": 1,
                 "ServiceRecord":self.service_record,
-                "Role":"server"
+                "Role":"server",
+                "RequireAuthentication":True,
+                "RequireAuthorization":True
             }
-            uuidarray = self.hci_props.Get("org.bluez.Adapter1", "UUIDs")
-            for uuids in uuidarray:
-                try:
-                    self.manager.RegisterProfile("/org/bluez/hci0", uuids, opts)
-                except:
-                    print uuids
-
+            self.manager.RegisterProfile("/org/bluez/hci0", self.UUID, opts)
+            
             print "Service Record saved!"
         except:
             print "Service Records saved. Probably already exists"
@@ -57,12 +54,10 @@ class Bluetooth:
         os.system("sudo hciconfig hci0 class "+self.classname)
         os.system("sudo hciconfig hci0 name "+self.devname)
         os.system("hciconfig hci0 piscan")
-
- 
+		
         self.soccontrol.listen(1)
         self.sockinter.listen(1)
         print "waiting for connection"
-		
         self.ccontrol, self.cinfo = self.soccontrol.accept()
         print "Control channel connected to "+self.cinfo[Bluetooth.HOST]
         self.cinter, self.cinfo = self.sockinter.accept()
