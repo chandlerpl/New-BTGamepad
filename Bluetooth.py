@@ -40,9 +40,7 @@ class Bluetooth:
             opts = {
                 "AutoConnect": 1,
                 "ServiceRecord":self.service_record,
-                "Role":"server",
-                "RequireAuthentication":False,
-                "RequireAuthorization":False
+                "Role":"server"
             }
             uuidarray = self.hci_props.Get("org.bluez.Adapter1", "UUIDs")
             for uuids in uuidarray:
