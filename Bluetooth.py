@@ -18,7 +18,17 @@ class Bluetooth:
 
         self.bus = dbus.SystemBus()
 
-        self.manager = dbus.Interface(self.bus.get_object("org.bluez", "/org/bluez"), "org.bluez.ProfileManager1")
+        try:
+            self.objManager = dbus.Interface(self.bus.get_object("org.bluez", "/"),
+                                          "org.freedesktop.DBus.ObjectManager")
+            #print self.manager.GetManagedObjects()["/org/bluez/hci0"]
+            self.manager = dbus.Interface(self.bus.get_object("org.bluez", "/org/bluez"),
+                                          "org.bluez.ProfileManager1")
+            self.hci_props = dbus.Interface(self.bus.get_object("org.bluez", "/org/bluez/hci0"),
+                                                                    "org.freedesktop.DBus.Properties")
+        except:
+            print sys.exc_info()
+            sys.exit("[FATAL] Could not set up Bluez5")
 
         try:
             fh = open(sdp,"r")
