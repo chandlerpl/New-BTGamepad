@@ -56,9 +56,11 @@ class Bluetooth:
         self.sockinter.listen(1)
         print "waiting for connection"
         self.ccontrol, self.cinfo = self.soccontrol.accept()
+		print "Test"
         print "Control channel connected to "+self.cinfo[Bluetooth.HOST]
         self.cinter, self.cinfo = self.sockinter.accept()
         print "Interrupt channel connected to "+self.cinfo[Bluetooth.HOST] 
+		print "Test2"
 
     def sendInput(self, inp):
         str_inp = ""
