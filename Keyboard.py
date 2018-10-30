@@ -31,8 +31,8 @@ class Keyboard:
                 if "keyboard" in str(self.dev):
                     break
             except Exception, e:
-                sys.exit("Keyboard not found")
-                break
+                print "Keyboard not found"
+                
             i += 1
         print "Keyboard Detected "+str(self.dev)
 
