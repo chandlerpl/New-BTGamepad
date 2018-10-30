@@ -64,6 +64,7 @@ class Bluetooth:
         self.soccontrol.listen(1)
         self.sockinter.listen(1)
         print "waiting for connection"
+		
         self.ccontrol, self.cinfo = self.soccontrol.accept()
         print "Control channel connected to "+self.cinfo[Bluetooth.HOST]
         self.cinter, self.cinfo = self.sockinter.accept()
