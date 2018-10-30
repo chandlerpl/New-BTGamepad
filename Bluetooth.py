@@ -54,7 +54,10 @@ class Bluetooth:
         os.system("sudo hciconfig hci0 class "+self.classname)
         os.system("sudo hciconfig hci0 name "+self.devname)
         os.system("hciconfig hci0 piscan")
-		
+
+        self.service_handle = self. service.AddRecord(self.service_record)
+        print “Service record added”
+ 
         self.soccontrol.listen(1)
         self.sockinter.listen(1)
         print "waiting for connection"
