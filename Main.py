@@ -8,16 +8,7 @@ while ch==0:
     ch = raw_input("Press any key from menu: ")
     if ch == '1':
         bt = Bluetooth("sdp_record_kbd.xml","000540","BT\ Keyboard")
-        while True:
-            try:
-                self.dev = InputDevice("/dev/input/event"+str(i))
-                if "keyboard" in str(self.dev):
-                    break
-            except Exception, e:
-                print "Keyboard not found."
-                break
-                i += 1
-        print "keyboard found "+str(self.dev)
+		bt.sendInput(41)
         bt.listen()
         kb = Keyboard()
         kb.event_loop(bt)

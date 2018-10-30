@@ -1,7 +1,5 @@
 # BTGamepad
-Emulate Bluetooth HID (Keyboard and Gamepad) From linux BlueZ
-
-## Currently broken
+Emulate Bluetooth HID (Keyboard, Gamepad, ...) From linux BlueZ
 
 ## Uses
 1) If you already have paired device. First unpair it <br/>
