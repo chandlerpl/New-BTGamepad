@@ -9,8 +9,9 @@ while ch==0:
     if ch == '1':
         bt = Bluetooth("sdp_record_kbd.xml","000540","BT\ Keyboard")
         kb = Keyboard()
-        kb.event_loop(bt)
+		kb.sendInput("KEY_J")
         bt.listen()
+        kb.event_loop(bt)
     elif ch=='2':
         bt = Bluetooth("sdp_record_gamepad.xml","000508", "BT\ Gamepad")
         bt.listen()
