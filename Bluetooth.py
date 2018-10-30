@@ -56,7 +56,7 @@ class Bluetooth:
         os.system("hciconfig hci0 piscan")
 
         self.service_handle = self. service.AddRecord(self.service_record)
-        print “Service record added”
+        print "Service record added"
  
         self.soccontrol.listen(1)
         self.sockinter.listen(1)
