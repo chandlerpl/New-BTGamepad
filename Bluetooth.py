@@ -38,7 +38,7 @@ class Bluetooth:
         fh.close()
         try:
             opts = {
-                "AutoConnect": 1,
+                "AutoConnect": True,
                 "ServiceRecord":self.service_record,
                 "Role":"server",
                 "RequireAuthentication":True,
