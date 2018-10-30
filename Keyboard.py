@@ -53,7 +53,7 @@ class Keyboard:
                     self.state[i] = hex_key
                 break
 				
-    def sendKey(self, evdev_code):
+    def sendKey(self, evdev_code, bt):
         modkey_element = keymap.modkey(evdev_code)
         if modkey_element > 0:
             if self.state[2][modkey_element] == 0:
