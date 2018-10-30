@@ -38,8 +38,8 @@ class Keyboard:
 
     def change_state(self,event):
         evdev_code = ecodes.KEY[event.code]
-		print event.code
-		print evdev_code
+        print event.code
+        print evdev_code
         modkey_element = keymap.modkey(evdev_code)
         if modkey_element > 0:
             if self.state[2][modkey_element] == 0:
