@@ -63,12 +63,13 @@ class Keyboard:
         else:
             hex_key = keymap.convert(evdev_code)
             for i in range(4,10):
-                if self.state[i] == hex_key and event.value == 0:
+                if self.state[i] == hex_key:
                     self.state[i] = 0x00
-                elif self.state[i] == 0x00 and event.value == 1:
+                elif self.state[i] == 0x00:
                     self.state[i] = hex_key
                 break
-    
+        bt.sendInput(self.state)
+
     def event_loop(self,bt):
         for event in self.dev.read_loop():
             if event.type == ecodes.EV_KEY and event.value < 2:
