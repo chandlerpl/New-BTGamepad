@@ -18,7 +18,7 @@ class Bluetooth:
 
         self.bus = dbus.SystemBus()
 
-		self.manager = dbus.Interface(self.bus.get_object("org.bluez", "/org/bluez"), "org.bluez.ProfileManager1")
+        self.manager = dbus.Interface(self.bus.get_object("org.bluez", "/org/bluez"), "org.bluez.ProfileManager1")
 
         try:
             fh = open(sdp,"r")
@@ -46,7 +46,7 @@ class Bluetooth:
         self.ccontrol, self.cinfo = self.soccontrol.accept()
         print "Control channel connected to "+self.cinfo[Bluetooth.HOST]
         self.cinter, self.cinfo = self.sockinter.accept()
-        print "Interrupt channel connected to "+self.cinfo[Bluetooth.HOST]
+        print "Interrupt channel connected to "+self.cinfo[Bluetooth.HOST] 
 
     def sendInput(self, inp):
         str_inp = ""
