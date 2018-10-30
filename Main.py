@@ -13,8 +13,8 @@ while ch==0:
         kb.event_loop(bt)
     elif ch=='2':
         bt = Bluetooth("sdp_record_gamepad.xml","000508", "BT\ Gamepad")
-        bt.listen()
         gp = Gamepad()
+        bt.listen()
         gp.event_loop(bt)
     else:
         ch = 0
