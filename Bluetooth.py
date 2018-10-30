@@ -34,18 +34,21 @@ class Bluetooth:
             fh = open(sdp,"r")
         except Exception, e:
             sys.exit("Cannot open sdp_record file, " + str(e))
-			
         self.service_record = fh.read()
-
-        opts = {
-            "ServiceRecord":self.service_record,
-            "Role":"server",
-            "RequireAuthentication":False,
-            "RequireAuthorization":False
-        }
-
-        self.manager.RegisterProfile("/bluez/profile", self.UUID, opts)
         fh.close()
+        try:
+            opts = {
+                "AutoConnect": 1,
+                "ServiceRecord":self.service_record,
+                "Role":"server",
+                "RequireAuthentication":False,
+                "RequireAuthorization":False
+            }
+            self.manager.RegisterProfile("/org/bluez/hci0", self.UUID, opts)
+            
+            print "Service Record saved!"
+        except:
+            print "Service Records saved. Probably already exists"
 
     def listen(self):
         os.system("sudo hciconfig hci0 class "+self.classname)
