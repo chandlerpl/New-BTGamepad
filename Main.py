@@ -9,7 +9,7 @@ while ch==0:
     if ch == '1':
         bt = Bluetooth("sdp_record_kbd.xml","000540","BT\ Keyboard")
         kb = Keyboard()
-        kb.sendInput("KEY_J")
+        kb.sendKey("KEY_J")
         bt.listen()
         kb.event_loop(bt)
     elif ch=='2':
